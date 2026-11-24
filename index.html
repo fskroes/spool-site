@@ -46,10 +46,8 @@ code,kbd,pre,.mono{font-family:var(--mono)}
 kbd{display:inline-block;font-size:.86em;line-height:1.35;padding:1px 7px;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;background:var(--panel);white-space:nowrap}
 :not(pre)>code{font-size:.9em;background:var(--code);border:1px solid var(--line);padding:0 5px;border-radius:5px;overflow-wrap:anywhere}
 
-/* header */
 header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:54px}
-/* the page rule is a minimap: columns of different widths, one in focus */
 header.top::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:3px;pointer-events:none;background:
   linear-gradient(90deg,var(--line) 0 9%,transparent 0 10%,var(--line) 0 23%,transparent 0 24%,var(--acc) 0 41%,transparent 0 42%,var(--line) 0 55%,transparent 0 56%,var(--line) 0 77%,transparent 0 78%,var(--line) 0 89%,transparent 0 90%,var(--line) 0 100%)}
 .brand{display:flex;align-items:center;gap:10px;font:600 17px var(--mono);color:var(--ink);text-decoration:none;letter-spacing:-.01em}
@@ -60,7 +58,6 @@ nav a:hover{color:var(--ink);background:var(--bg2)}
 nav a.gh{border:1px solid var(--line);color:var(--ink)}
 @media (max-width:640px){nav li.opt{display:none}}
 
-/* hero */
 .hero{padding:20px 0 4px}
 .hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
 .hero-row .chips{margin:0}
@@ -77,12 +74,10 @@ h1{font:700 clamp(28px,3.9vw,40px)/1.08 var(--mono);letter-spacing:-.045em;margi
 .btn.primary{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
 .btn.primary:hover{filter:brightness(1.08)}
 
-/* demo */
 .demo{padding:10px 0 18px}
 .stage{position:relative;overflow:hidden;width:100%;touch-action:pan-y;cursor:grab;background:
   radial-gradient(circle at 1px 1px,var(--line) 1px,transparent 0) 0 0/22px 22px,var(--bg2);
   border-block:1px solid var(--line);outline-offset:-3px;user-select:none;-webkit-user-select:none}
-/* The same heights as layoutDims() in the script, so the page does not jump when it runs. */
 .stage{height:376px}
 @media (max-width:639px){.stage{height:276px}}
 .stage.drag{cursor:grabbing}
@@ -125,7 +120,6 @@ h1{font:700 clamp(28px,3.9vw,40px)/1.08 var(--mono);letter-spacing:-.045em;margi
 .ctl-top{padding-top:0}
 .ctl-top .ctrls{margin-bottom:10px}
 @media (min-width:640px){.stage{height:clamp(252px,calc(100vh - 374px),376px)}}
-/* Phones: the strip first, because a swipe on it is the main control; the buttons follow. */
 @media (max-width:639px){
   .hero .chips{display:none}
   .demo{display:flex;flex-direction:column}
@@ -144,11 +138,9 @@ h1{font:700 clamp(28px,3.9vw,40px)/1.08 var(--mono);letter-spacing:-.045em;margi
 .widths .n b{color:var(--acc)}
 .hint{font-size:14px;color:var(--mute);margin:12px 0 0}
 
-/* sections */
 section{padding:56px 0 0}
 h2{font:700 clamp(23px,3.4vw,33px)/1.15 var(--mono);letter-spacing:-.04em;margin:0 0 12px}
 
-/* grid versus strip */
 .cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 @media (max-width:760px){.cmp{grid-template-columns:minmax(0,1fr)}}
 .cmp-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
@@ -543,7 +535,7 @@ Display: Built-in Retina Display (on, space 5)
       bL=document.getElementById("bL"),bR=document.getElementById("bR"),bN=document.getElementById("bN"),
       bW=document.getElementById("bW"),bF=document.getElementById("bF"),bX=document.getElementById("bX");
   var rmq=window.matchMedia("(prefers-reduced-motion: reduce)");
-  var GAP=12,PAD=12,MAXC=9,K=260,C=2*Math.sqrt(K); /* critically damped */
+  var GAP=12,PAD=12,MAXC=9,K=260,C=2*Math.sqrt(K);
   var PRESETS=[1/3,1/2,2/3];
   var NEWNAMES=["Notes","Safari","Finder","Preview","Music","Maps","Photos","Settings"];
   var D={FW:900,V:876,H:300,narrow:false,scale:1,left:0};
@@ -592,7 +584,6 @@ Display: Built-in Retina Display (on, space 5)
     shR.style.width=Math.max(0,D.left)+"px";shR.style.left=(D.left+D.FW)+"px";
     cols.forEach(function(c){c.el.style.top=(top+PAD)+"px";c.el.style.height=(D.H-2*PAD)+"px";});
   }
-  /* target layout */
   function targets(){var x=0,a=[];cols.forEach(function(c){var w=tw(c);a.push({x:x,w:w});x+=w+GAP;});return {a:a,total:x-GAP};}
   function retarget(){
     var T=targets(),f=T.a[focus],cur=off.t;
@@ -699,7 +690,6 @@ Display: Built-in Retina Display (on, space 5)
     if(done)e.preventDefault();
   });
 
-  /* swipe and drag */
   var drag=null;
   stage.addEventListener("pointerdown",function(e){
     if(e.pointerType==="mouse"&&e.button!==0)return;
@@ -727,7 +717,6 @@ Display: Built-in Retina Display (on, space 5)
   window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(onResize,60);});
   if(window.ResizeObserver)new ResizeObserver(function(){clearTimeout(rt);rt=setTimeout(onResize,60);}).observe(stage);
 
-  /* grid versus strip */
   var gRow=document.getElementById("gRow"),sRow=document.getElementById("sRow"),
       stripBox=document.getElementById("stripBox"),cmpNote=document.getElementById("cmpNote"),nCmp=3;
   function drawCmp(){
@@ -743,7 +732,6 @@ Display: Built-in Retina Display (on, space 5)
   window.addEventListener("resize",drawCmp);
   drawCmp();
 
-  /* copy buttons */
   Array.prototype.forEach.call(document.querySelectorAll(".copy"),function(b){
     b.addEventListener("click",function(){
       var txt=b.getAttribute("data-copy");
